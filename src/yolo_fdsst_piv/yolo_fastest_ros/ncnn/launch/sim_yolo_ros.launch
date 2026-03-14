@@ -12,6 +12,8 @@
   <node pkg="nodelet" type="nodelet"
       name="$(arg manager_name)" args="manager" output="screen">
       <param name="num_worker_threads" value="1" />
+      <!-- Apply remap at manager level so loaded nodelets inherit it -->
+      <remap from="/vicon_imu_ekf_odom" to="/gt_iris_base_link_imu"/>
   </node>
 
   <include file="$(find dyn_object_tracker)/launch/piv_filter_start_sim.launch">
